@@ -29,20 +29,7 @@ public class Course {
     private List<Booking> bookings;
 
     @JsonIgnore
-    @ManyToMany
-    @JoinTable(
-            name = "customers_courses",
-            joinColumns = { @JoinColumn(
-                    name = "course_id",
-                    nullable = false,
-                    updatable = false)
-            },
-            inverseJoinColumns = { @JoinColumn(
-                    name = "customer_id",
-                    nullable = false,
-                    updatable = false)
-            })
-
+    @ManyToMany(mappedBy = "courses")
     private List<Customer> customers;
 
 

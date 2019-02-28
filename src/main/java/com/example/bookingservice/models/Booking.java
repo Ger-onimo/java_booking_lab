@@ -19,7 +19,7 @@ public class Booking {
 
     // TODO many to one course
     @ManyToOne
-    @JoinColumn(name = "courses_id", nullable = false)
+    @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
 

@@ -29,7 +29,7 @@ public class Customer {
     @JsonIgnore
     @ManyToMany
     @JoinTable(
-            name = "courses_customers",
+            name = "bookings",
             joinColumns = { @JoinColumn(
                     name = "customer_id",
                     nullable = false,
@@ -40,7 +40,6 @@ public class Customer {
                     nullable = false,
                     updatable = false)
             })
-
     private List<Course> courses;
 
 
