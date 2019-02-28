@@ -37,13 +37,8 @@ public class BookingserviceApplicationTests {
 		List<Course> found = courseRepository.findCoursesByStarRating(5);
 	}
 
-//	@Test
-//	public void canFindCustomersByCourseId(){
-//		List<Customer>  found = customerRepository.findCustomersByCourseId(1L);
-//	}
-
 	@Test
-	public void canFinfBookingsByDate(){
+	public void canFindBookingsByDate(){
 		List<Booking> found = bookingRepository.findBookingsByDate("01-03-2019");
 	}
 
@@ -51,5 +46,12 @@ public class BookingserviceApplicationTests {
 	public void canGetAllTheCustomersByCourseTown(){
 		List<Customer> found = customerRepository.getAllTheCustomersByCourseTown("Edinburgh");
 	}
+
+	@Test
+	public void canGetAllTheCustomersByAgeAndTownAndCourse(){
+		List<Customer> found = customerRepository.getAllTheCustomersByAgeAndTownAndCourse
+				(25,"Edinburgh", "python");
+	}
+
 
 }

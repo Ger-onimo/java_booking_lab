@@ -27,4 +27,18 @@ public class CustomerRepositoryImpl implements CustomerRepositoryCustom {
         return result;
     }
 
+    @Transactional
+    public List<Customer> getAllTheCustomersByAgeAndTownAndCourse(int age, String customerTown, String courseName){
+        List<Customer> result = null;
+        Session session = entityManager.unwrap(Session.class);
+        Criteria cr = session.createCriteria(Customer.class);
+        cr.add(Restrictions.ge("age", age));
+        cr.add(Restrictions.eq("customerTown", customerTown));
+        cr.createAlias("courses", "coursesAlias");
+        cr.add(Restrictions.eq("coursesAlias.courseName", courseName));
+        result = cr.list();
+        return result;
+    }
+
+
 }
