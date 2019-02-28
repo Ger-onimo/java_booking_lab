@@ -47,4 +47,9 @@ public class BookingserviceApplicationTests {
 		List<Booking> found = bookingRepository.findBookingsByDate("01-03-2019");
 	}
 
+	@Test
+	public void canGetAllTheCustomersByCourseTown(){
+		List<Customer> found = customerRepository.getAllTheCustomersByCourseTown("Edinburgh");
+	}
+
 }
