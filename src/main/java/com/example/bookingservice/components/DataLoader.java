@@ -28,7 +28,7 @@ public class DataLoader implements ApplicationRunner {
 
         Course course1 = new Course("python", "Edinburgh",5);
         courseRepository.save(course1);
-        Course course2 = new Course("java", "Glasgow",4);
+        Course course2 = new Course("java", "Glasgow",5);
         courseRepository.save(course2);
         Course course3 = new Course("ruby", "Edinburgh",1);
         courseRepository.save(course3);
@@ -52,6 +52,6 @@ public class DataLoader implements ApplicationRunner {
         bookingRepository.save(booking3);
         Booking booking4 = new Booking("11-01-2019",course1,customer2);
         bookingRepository.save(booking4);
-        
+
     }
 }
