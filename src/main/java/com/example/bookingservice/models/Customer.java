@@ -26,12 +26,30 @@ public class Customer {
     @OneToMany(mappedBy = "customer")
     private List<Booking> bookings;
 
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(
+            name = "courses_customers",
+            joinColumns = { @JoinColumn(
+                    name = "customer_id",
+                    nullable = false,
+                    updatable = false)
+            },
+            inverseJoinColumns = { @JoinColumn(
+                    name = "course_id",
+                    nullable = false,
+                    updatable = false)
+            })
+
+    private List<Course> courses;
+
 
     public Customer(String customerName, String customerTown, int age) {
         this.customerName = customerName;
         this.customerTown = customerTown;
         this.age = age;
         this.bookings = new ArrayList<>();
+        this.courses = new ArrayList<>();
     }
 
     public Customer() {
@@ -67,5 +85,9 @@ public class Customer {
 
     public void setBookings(List<Booking> bookings) {
         this.bookings = bookings;
+    }
+
+    public void addCourse(Course course){
+        this.courses.add(course);
     }
 }

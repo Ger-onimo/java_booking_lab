@@ -3,6 +3,8 @@ package com.example.bookingservice.models;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "bookings")
@@ -24,8 +26,6 @@ public class Booking {
     @ManyToOne
     @JoinColumn(name = "customer_id", nullable = false)
     private Customer customer;
-
-    //TODO many to many with course and customer
 
     public Booking(String date, Course course, Customer customer ) {
         this.date = date;
@@ -59,4 +59,6 @@ public class Booking {
     public void setCustomer(Customer customer) {
         this.customer = customer;
     }
+
+
 }
