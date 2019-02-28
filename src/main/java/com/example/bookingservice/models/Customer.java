@@ -1,6 +1,10 @@
 package com.example.bookingservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table( name = "customers")
@@ -19,12 +23,15 @@ public class Customer {
     @Column( name = "age")
     private int age;
 
-    //TODO one to many bookings
+    @OneToMany(mappedBy = "customer")
+    private List<Booking> bookings;
+
 
     public Customer(String customerName, String customerTown, int age) {
         this.customerName = customerName;
         this.customerTown = customerTown;
         this.age = age;
+        this.bookings = new ArrayList<>();
     }
 
     public Customer() {
@@ -52,5 +59,13 @@ public class Customer {
 
     public void setAge(int age) {
         this.age = age;
+    }
+
+    public List<Booking> getBookings() {
+        return bookings;
+    }
+
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
     }
 }

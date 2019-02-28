@@ -24,7 +24,6 @@ public class Course {
     @Column(name = "star_rating")
     private int starRating;
 
-    //TODO one to many bookings
     @JsonIgnore
     @OneToMany(mappedBy = "course")
     private List<Booking> bookings;
