@@ -1,5 +1,7 @@
 package com.example.bookingservice.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -13,11 +15,20 @@ public class Booking {
     @Column(name = "date")
     private String date;
 
-    // 
+    // TODO many to one course
+    @ManyToOne
+    @JoinColumn(name = "courses_id", nullable = false)
+    private Course course;
+
+
+    // TODO many to one customer
+
+
     //TODO many to many with course and customer
 
-    public Booking(String date) {
+    public Booking(String date, Course course ) {
         this.date = date;
+        this.course = course;
     }
 
     public Booking(){
@@ -29,5 +40,13 @@ public class Booking {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public Course getCourse() {
+        return course;
+    }
+
+    public void setCourse(Course course) {
+        this.course = course;
     }
 }

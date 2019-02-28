@@ -1,7 +1,11 @@
 package com.example.bookingservice.models;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "courses")
@@ -21,11 +25,16 @@ public class Course {
     private int starRating;
 
     //TODO one to many bookings
+    @JsonIgnore
+    @OneToMany(mappedBy = "course")
+    private List<Booking> bookings;
+
 
     public Course(String courseName, String courseTown, int starRating) {
         this.courseName = courseName;
         this.courseTown = courseTown;
         this.starRating = starRating;
+        this.bookings = new ArrayList<>();
     }
 
     public Course() {
@@ -55,5 +64,11 @@ public class Course {
         this.starRating = starRating;
     }
 
+    public List<Booking> getBookings() {
+        return bookings;
+    }
 
+    public void setBookings(List<Booking> bookings) {
+        this.bookings = bookings;
+    }
 }
